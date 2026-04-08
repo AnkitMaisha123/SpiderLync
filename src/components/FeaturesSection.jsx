@@ -69,6 +69,18 @@ const types = [
     headerBg: "bg-emerald-500/5",
     accent: "text-emerald-300",
   },
+  {
+    name: "Tiny URL",
+    border: "border-emerald-500/20",
+    headerBg: "bg-emerald-500/5",
+    accent: "text-emerald-300",
+  },
+  {
+    name: "SMS Mail Gateway",
+    border: "border-emerald-500/20",
+    headerBg: "bg-emerald-500/5",
+    accent: "text-emerald-300",
+  },
 ];
 const FeaturesSection = () => {
   return (
