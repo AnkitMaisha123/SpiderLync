@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /newspiderlync/
+
+RewriteRule ^index\.html$ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . /newspiderlync/index.html [L]

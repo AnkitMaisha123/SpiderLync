@@ -1,11 +1,11 @@
-import React from "react";
-import DeepLinkingPage from "./DeepLinkingPage";
-import HeroSection from "./components/HeroSection";
 import MouseFollower from "mouse-follower";
 import { useEffect } from "react";
 import gsap from "gsap";
 import "mouse-follower/dist/mouse-follower.min.css";
-import FeaturesSection from "./components/FeaturesSection";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 MouseFollower.registerGSAP(gsap);
 
@@ -20,8 +20,11 @@ const App = () => {
   }, []);
   return (
     <div className="w-full h-full bg-[#0d0d14] text-white">
-      <HeroSection />
-      <FeaturesSection/>
+      <Header/>
+      <Routes>
+        <Route path="/newspiderlync/" element={<Home/>}></Route>
+      </Routes>
+      <Footer/>
     </div>
   );
 };
