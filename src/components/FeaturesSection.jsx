@@ -4,7 +4,6 @@ import {
   Database,
   Bell,
   Activity,
-  Link,
   Video,
   CloudLightning,
   Code,
@@ -14,6 +13,7 @@ import {
   Scissors,
   Mail,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const types = [
   {
@@ -33,6 +33,7 @@ const Test = Parse.Object.extend("Test");
 const obj = new Test();
 obj.set("name", "SpiderLync");
 await obj.save();`,
+    link: `/newspiderlync//features/parse-integration`,
   },
   {
     name: "Push Notifications",
@@ -50,6 +51,8 @@ await obj.save();`,
   })
 });
     `,
+        link: `/newspiderlync//features/push-notifications`,
+
   },
   {
     name: "Realtime Database",
@@ -66,6 +69,8 @@ socket.onmessage = (event) => {
   console.log("New Data:", event.data);
 };
     `,
+        link: `/newspiderlync//features/realtime-database`,
+
   },
   {
     name: "Referral Links / Deep Linking",
@@ -81,6 +86,8 @@ socket.onmessage = (event) => {
   ref: "user_456"
 });
     `,
+        link: `/newspiderlync//features/deep-linking`,
+
   },
   {
     name: "Cloud Functions",
@@ -95,6 +102,8 @@ socket.onmessage = (event) => {
   return "Hello from SpiderLync!";
 });
     `,
+        link: `/newspiderlync//features/cloud-functions`,
+
   },
   {
     name: "Live Stream",
@@ -109,6 +118,8 @@ socket.onmessage = (event) => {
 
 video.srcObject = stream;
     `,
+        link: `/newspiderlync//features/live-stream`,
+
   },
 
   {
@@ -132,6 +143,8 @@ query {
 // REST
 fetch("/api/users").then(res => res.json());
     `,
+        link: `/newspiderlync//features/graphql-rest`,
+
   },
   {
     name: "Authentication",
@@ -145,6 +158,8 @@ fetch("/api/users").then(res => res.json());
     code: `const user = await Parse.User.logIn("username", "password");
 console.log(user);
     `,
+        link: `/newspiderlync//features/authentication`,
+
   },
   {
     name: "Web Developement",
@@ -158,6 +173,8 @@ console.log(user);
   return <h1>Welcome to SpiderLync</h1>;
 }
     `,
+        link: `/newspiderlync//features/web-development`,
+
   },
   {
     name: "QR Generator",
@@ -173,6 +190,8 @@ console.log(user);
 QRCode.toDataURL("https://spiderlync.com", (err, url) => {
   console.log(url);
 });`,
+    link: `/newspiderlync//features/qr-generator`,
+
   },
   {
     name: "Tiny URL",
@@ -187,6 +206,8 @@ QRCode.toDataURL("https://spiderlync.com", (err, url) => {
   method: "POST",
   body: JSON.stringify({ url: "https://example.com" })
 });`,
+    link: `/newspiderlync//features/tiny-url`,
+
   },
   {
     name: "SMS Mail Gateway",
@@ -203,6 +224,8 @@ QRCode.toDataURL("https://spiderlync.com", (err, url) => {
 });
 
     `,
+        link: `/newspiderlync//features/sms-mail`,
+
   },
 ];
 const FeaturesSection = () => {
@@ -240,7 +263,7 @@ const FeaturesSection = () => {
         {types.map((t, i) => {
           const Icon = t.icon;
           return (
-            <div
+            <Link to={t.link}
               onMouseEnter={() => {
                 blobRef.current.style.background = t.color;
                 blobRef.current.classList.add("active");
@@ -273,7 +296,7 @@ const FeaturesSection = () => {
                   </button>
                 </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
